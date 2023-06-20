@@ -3,16 +3,17 @@ import { TextInput, View , Button, Text} from 'react-native';
 import { styleForm } from './FormSignInStyle';
 import { validationSchema } from './ValidationSchema';
 import { useContext, useEffect, useState } from 'react';
-import { useTokenUser } from '../../Hooks/useTokenUser';
+import { useTokenUser } from '../../Hooks/HooksUsers/useTokenUser';
 import { SessionContext } from '../../contexts/sessionContex';
-const handleREset = (resetForm) => {
- resetForm()
-}
+import { useNavigation } from '@react-navigation/native';
+import { Groups } from '../../Screens/GroupsScreens';
+
 
 export const FormSignIn = () => {
   const [dataUser, setDataUser] = useState({});
   const {data, loading, error , loginUser} = useTokenUser(dataUser) 
-  const {login, logout} = useContext(SessionContext) 
+  const {login} = useContext(SessionContext) 
+  const navigation = useNavigation()
 
   useEffect(()=> {
     if (data) {
@@ -28,9 +29,7 @@ export const FormSignIn = () => {
     }
   }
   
-  
   return( 
-    
     <Formik
     initialValues={{email: '', password:''}}
     validationSchema={validationSchema}
@@ -39,30 +38,30 @@ export const FormSignIn = () => {
       tokenUsers() 
   }}
  >
-{({ handleChange, handleSubmit, values, errors ,resetForm }) => (
+    {({ handleChange, handleSubmit, values, errors }) => (
       <View style={{ marginVertical: 15 ,  width:'70%'}}>
         <TextInput
           style={styleForm.input}
-          placeholder="Correo electrónico"
+          placeholder="Email"
           onChangeText={handleChange('email')}
           value={values.email}
         />
-        {errors.email && <Text style={{ color: 'red' }}>{errors.email}</Text>}
+        {errors.email && <Text style={{ color: 'yellow' ,fontSize: 20, letterSpacing: 1 , marginVertical: 5}}>{errors.email}</Text>}
 
         <TextInput
           style={styleForm.input}
-          placeholder="Contraseña"
+          placeholder="Password"
           onChangeText={handleChange('password')}
           value={values.password}
           secureTextEntry
         />
-        {errors.password && <Text style={{ color: 'red' ,fontSize: 20, letterSpacing: 1 }}>{errors.password}</Text>}
-
-        <Button title="Enviar" onPress={handleSubmit} />
-        <Button title="limpiar" onPress={() => handleREset(resetForm)} />
+        {errors.password && <Text style={{ color: 'yellow' ,fontSize: 20, letterSpacing: 1 , marginVertical: 5}}>{errors.password}</Text>}
+        <View style={{  marginTop: 20 , height: 150, justifyContent:'space-between'}}>
+          <Button title="Sign in" onPress={handleSubmit} />
+          <Button title="Sign Up" onPress={() => navigation.navigate(Groups.AuthGroup.signUp.name)} />
+        </View>
       </View>
     )}
-
  </Formik>
   
  )

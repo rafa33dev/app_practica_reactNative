@@ -1,17 +1,13 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { useNavigation } from '@react-navigation/native'
 import jwtDecode from 'jwt-decode'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { Groups } from '../Screens/GroupsScreens'
 
 export const SessionContext = createContext()
 
 export const SessionContextProvider = ({children}) => {
-  //const [token, setToken ] = useState('')
-  const navigation = useNavigation()
+
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
- // const [userSession, setUserSession] = useState(false);
   useEffect(()=> {
     const checkAuthentication = async () => {
       const token =  await AsyncStorage.getItem('token')

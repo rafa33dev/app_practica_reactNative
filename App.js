@@ -6,7 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { SessionContextProvider } from './src/contexts/sessionContex';
 import { GroupsNavigator } from './src/GroupsNavigator';
 const client = new ApolloClient({
-  uri: 'http://10.2.20.55:4000',
+  uri: 'http://10.2.20.52:4000',
   cache: new InMemoryCache(),
 });
 

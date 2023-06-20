@@ -1,6 +1,7 @@
 import HomeScreen from "./HomeScreen";
 import HomeUsersScreen from "./HomeUserScreen";
 import SignInScreen from "./SignInScreen";
+import SignUpScreen from "./SignUpScreen";
 
 export const Groups = {
   AuthGroup: {
@@ -14,6 +15,13 @@ export const Groups = {
       name: 'login',
       title: 'Main',
       component: SignInScreen,
+      backIcon : false
+    },
+
+    'signUp': {
+      name: 'signUp',
+      title: 'signUp',
+      component: SignUpScreen,
       backIcon : false
     },
 

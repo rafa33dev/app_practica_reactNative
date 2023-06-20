@@ -1,5 +1,5 @@
 const { View, Text, StyleSheet } = require("react-native")
-import { FormSignIn } from "../Components/FormSignIn./FormSignIn"
+import { FormSignIn } from "../../Components/FormSignIn/FormSignIn"
 
 const SignInScreen = () => {
   return(
