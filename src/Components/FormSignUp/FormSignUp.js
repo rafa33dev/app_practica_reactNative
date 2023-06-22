@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native'
 import { Groups } from '../../Screens/GroupsScreens'
 import { useCreateUser } from '../../Hooks/HooksUsers/useCreateUser'
 import { Picker } from '@react-native-picker/picker'
-//import { useContext } from 'react'
 
 export const FormSignUp = () => {
   const [dataUser, setDataUser] = useState({})
@@ -36,7 +35,6 @@ export const FormSignUp = () => {
       throw new Error('error al crear al usuario')
     }
   }
-
 
   return(
     <Formik

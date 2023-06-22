@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { SessionContext } from './contexts/sessionContex'
 import { Groups } from './Screens/GroupsScreens'
-import { Button, Text, View } from 'react-native'
 import { useGroupNavigator } from './Hooks/useGroupNavigator'
 
 export const GroupsNavigator = () => {

@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export const SessionContext = createContext()
 
 export const SessionContextProvider = ({children}) => {
+  const [switchTheme, setSwitchTheme] = useState('light')
 
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -72,6 +73,7 @@ export const SessionContextProvider = ({children}) => {
         isLoading,
         login,
         logout,
+        switchTheme,
       }
     }
    

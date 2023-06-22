@@ -1,5 +1,6 @@
 import HomeScreen from "./HomeScreen";
 import HomeUsersScreen from "./HomeUserScreen";
+import ProfileUserScreen from "./ProfileUserScreen";
 import SignInScreen from "./SignInScreen";
 import SignUpScreen from "./SignUpScreen";
 
@@ -32,15 +33,18 @@ export const Groups = {
      name: 'homeUserScreen',
      title: 'user',
      component: HomeUsersScreen,
-     backIcon : false
+     backIcon : false,
+     showHeader: true,
+     moreIcon: true,
+
      },
 
-  // 'home': {
-  //   name: 'home',
-  //  title: 'Main',
-  //    component: HomeScreen,
-  //     backIcon : false
-  //  }
-  // },
+   'profileUserScreen': {
+    name: 'home',
+    title: 'Main',
+    component: ProfileUserScreen,
+    backIcon : false
+  
+  },
  }
 }
