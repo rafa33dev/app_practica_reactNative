@@ -5,6 +5,7 @@ export const GET_POST = gql`
     GetUsers {
       name
       posts {
+        id
         title
         content
       }

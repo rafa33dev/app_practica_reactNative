@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 4,
     alignItems: 'center',
-    backgroundColor: 'black'
+    // backgroundColor: 'black'
   },
 
   containerPost : {
