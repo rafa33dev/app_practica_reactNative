@@ -4,6 +4,7 @@ import { TextInput, View , Pressable} from "react-native"
 import { SessionContext } from "../../contexts/sessionContex"
 import { useCreateComment } from "../../Hooks/HooksComments/useCreateComment"
 
+
 export const CreateComment = ({postId}) => {
 
   const [content, setContent] = useState('')
@@ -12,9 +13,9 @@ export const CreateComment = ({postId}) => {
   const {createComment, data, loading, error} = useCreateComment({ postId: postId , content: content, userId: user.userId})
   
 
-  useEffect(() => {
-    console.log('--->', data);
-  },[data])
+  // useEffect(() => {
+  //   console.log('--->', data);
+  // },[data])
 
   const Comment = () => {
     try {

@@ -45,6 +45,7 @@ export const FormSignIn = () => {
           placeholder="Email"
           onChangeText={handleChange('email')}
           value={values.email}
+          autoCapitalize='none'
         />
         {errors.email && <Text style={{ color: 'yellow' ,fontSize: 20, letterSpacing: 1 , marginVertical: 5}}>{errors.email}</Text>}
 

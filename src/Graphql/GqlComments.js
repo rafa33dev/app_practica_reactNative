@@ -9,3 +9,17 @@ mutation CreateComment($postId: ID!, $content: String!, $userId: ID!) {
 }
 
 `
+
+export const GetComment_Post = gql`
+query Post($postId: ID!) {
+  Post(id: $postId) {
+    comments {
+      content
+      author {
+        name
+      }
+    }
+  }
+}
+
+`

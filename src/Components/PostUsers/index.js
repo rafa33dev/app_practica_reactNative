@@ -10,17 +10,15 @@ import { useState } from "react";
 export const PostUsers = () => {
   const {data} = useGetPosts()
   const {userPosts} = arrayPosts(data)
-  const [postId, setPosId] = useState('')  
    
 
   const renderItem = ({ item }) => {
-     
+
     return (
       <Box border="1" borderRadius="md">
       <VStack space="4" marginBottom={'90'} bgColor={'red.300'} divider={<Divider />}>
         <Box px="4" pt="4">
-          {setPosId(item.id)}
-         {item.id}
+         {item.name}
         </Box>
         <Box px="4">
           {item.content}

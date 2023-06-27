@@ -1,9 +1,10 @@
 import {Icon} from '@ui-kitten/components';
-import {Pressable, View, Modal ,TextInput, Button} from 'react-native';
+import {Pressable, View, Modal ,TextInput, Button, Text} from 'react-native';
 import {useState} from 'react';
 import { CreateComment } from '../CreateComment';
+import { ListComment } from '../CreateComment/ListComment';
 
-export const TypeIcons = ({name, color, styles, postId}) => {
+export const TypeIcons = ({name, color, styles, postId }) => {
   const [showComment, setShowComment] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -21,6 +22,9 @@ export const TypeIcons = ({name, color, styles, postId}) => {
         <Icon name={name} width={30} height={30} fill={color} />
       </Pressable>
       <Modal visible={modalVisible} animationType="slide" >
+
+          <ListComment postId={postId} />
+
         <View style={{ flex: 1, justifyContent: 'flex-end', bottom: 30}}>
           <CreateComment postId={postId}/>
           <Button title="Cancelar" onPress={closed}/>
