@@ -21,9 +21,14 @@ export const FormSignIn = () => {
     }
   },[data])
   
-  const tokenUsers = () => {
+  const tokenUsers = (values) => {
     try {
-      loginUser()
+      loginUser( {
+        variables:{
+          email: values.email,
+          password: values.password
+        }
+      })
     } catch (error) {
       throw new Error('error de inicion de ssesion')
     }
@@ -34,8 +39,7 @@ export const FormSignIn = () => {
     initialValues={{email: '', password:''}}
     validationSchema={validationSchema}
     onSubmit={(values) => {
-      setDataUser(values)
-      tokenUsers() 
+      tokenUsers(values) 
   }}
  >
     {({ handleChange, handleSubmit, values, errors }) => (

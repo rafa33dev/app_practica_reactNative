@@ -1,42 +1,63 @@
-import { FlatList } from "native-base"
-import { useGetCommentPost } from "../../../Hooks/HooksComments/getCommentsPost"
-import { Text, View } from "react-native"
-import { Box,VStack, Divider } from "native-base"
-import { SessionContext } from "../../../contexts/sessionContex"
-import { useContext } from "react"
+import {FlatList} from 'native-base';
+import {useGetCommentPost} from '../../../Hooks/HooksComments/getCommentsPost';
+import {Text, View} from 'react-native';
+import {Box, VStack, Divider, Pressable} from 'native-base';
+import {Icon} from '@ui-kitten/components';
+import {SessionContext} from '../../../contexts/sessionContex';
+import {useContext, useState} from 'react';
 
 export const ListComment = ({postId}) => {
-  const {user} = useContext(SessionContext)
+  const {data} = useGetCommentPost(postId);
+  const [like, setLike] = useState(0)
 
-  
-  const {data} = useGetCommentPost(postId)
-  console.log(data);
-  //console.log(data.Post.comments.map(n => n.content)); 
-  
   const ListCommentItems = ({item}) => {
-      console.log('listo-->',item);
-      return (
-        <Box border="1" borderRadius="md">
-        <VStack space="4" marginBottom={'90'} bgColor={'red.300'} divider={<Divider />}>
+    return (
+      <Box border="1">
+        <VStack space="4" h={140} marginBottom={'50'}>
           <Box px="4" pt="4">
-
-           {item.author.name}
+            {item.author.name}
           </Box>
-          <Box px="4">
+          <Box
+            px="4"
+            borderRadius={'xl'}
+            h={100}
+            borderWidth={1}
+            justifyContent={'space-between'}
+            overflowY={'hidden'}
+            p={4}>
             {item.content}
+            <Box  flexDirection={'row'} justifyContent={'flex-end'}>
+              <Pressable  w={10} onPress={() => setLike(() => like + 1)}>
+                <Icon name="heart" width={30} height={30} fill="" />
+                <Text
+                  style={{
+                    position: 'absolute',
+                    right: -5,
+                    color: 'black',
+                    fontSize: 18,
+                  }}>
+                  {like}
+                </Text>
+              </Pressable>
+              <Pressable  w={10} onPress={() => console.log('eliminado')}>
+                <Icon name="trash-2-outline" width={48} height={28} fill="" />
+              </Pressable>
+              <Text></Text>
+            </Box>
           </Box>
         </VStack>
       </Box>
-      )
-  }
+    );
+  };
 
-  return(
+  return (
     <View>
       <FlatList
-       data={data?.Post?.comments}
-       renderItem={({item}) => < ListCommentItems item={item}/>}
-       keyExtractor={(item, index) => index.toString()}
+        style={{height: 600, top: 50, padding: 10}}
+        data={data?.Post?.comments}
+        renderItem={({item}) => <ListCommentItems item={item} />}
+        keyExtractor={(item, index) => index.toString()}
       />
     </View>
-  )
-}
+  );
+};

@@ -12,7 +12,6 @@ export const CreateComment = ({postId}) => {
 
   const {createComment, data, loading, error} = useCreateComment({ postId: postId , content: content, userId: user.userId})
   
-
   // useEffect(() => {
   //   console.log('--->', data);
   // },[data])
@@ -20,7 +19,8 @@ export const CreateComment = ({postId}) => {
   const Comment = () => {
     try {
       createComment()
-      console.log('coemntario creado');
+      console.log('comentario creado!');
+      setContent('')
     } catch (error) {
       throw new Error('Error al crear el comentario')
     }
@@ -38,7 +38,7 @@ export const CreateComment = ({postId}) => {
         style={{backgroundColor: 'gray' , padding: 10, marginHorizontal: 5 ,borderRadius: 16 ,height: 40, fontSize: 18}}
       /> 
       </ScrollView>
-     <Button onPress={Comment} style={{height: 50}}>publicat</Button>
+     <Button onPress={Comment} style={{height: 50}}>Comentar</Button>
     </View>
   )
 }

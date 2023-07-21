@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native"
 import { Groups } from "../GroupsScreens"
 import { PostUsers } from "../../Components/PostUsers"
 import { MenuIcon } from "../../Components/MenuIcon"
+import { SubscriptionComment } from "../../Components/SubcriptionComment"
 
 const HomeUsersScreen = () => {
   const {logout , user} = useContext(SessionContext)
@@ -16,6 +17,7 @@ const HomeUsersScreen = () => {
     <View style= {styles.containerHome}>
       <View style={styles.menuIcon}>
         <MenuIcon navigation={navigation}/>
+        <SubscriptionComment />
       </View>
       <Text style={styles.titleUser}>{role} Hello {name}</Text>
       <View style= {styles.containerPost}>
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
   },
   containerHome : {
     flex: 1,
-    borderWidth: 4,
     alignItems: 'center',
     // backgroundColor: 'black'
   },
@@ -46,8 +47,10 @@ const styles = StyleSheet.create({
   },
 
   menuIcon:{
-    top: 45,
-    left: -180
+    paddingHorizontal: 5,
+    top: 50,
+    flexDirection: 'row',
+    justifyContent:'space-around',
   }
 
 })

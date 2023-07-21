@@ -1,7 +1,7 @@
 import { FlatList,StyleSheet} from "react-native"
 import { useGetPosts } from "../../Hooks/HooksPosts/useGetPosts"
 import { arrayPosts } from "../../Utils/arrayPosts/arrayPosts"
-import { VStack, Box, Divider } from 'native-base';
+import { VStack, Box, Divider, Text, Pressable } from 'native-base';
 import { TypeIcons } from "../TypeIcons";
 import {Icon} from '@ui-kitten/components';
 import { useState } from "react";
@@ -10,6 +10,7 @@ import { useState } from "react";
 export const PostUsers = () => {
   const {data} = useGetPosts()
   const {userPosts} = arrayPosts(data)
+  const [like, setLike] = useState(0)
    
 
   const renderItem = ({ item }) => {
@@ -25,7 +26,11 @@ export const PostUsers = () => {
         </Box>
         <Box px="4" pb="4" flexDirection='row'justifyContent='flex-end'>
           <TypeIcons name="message-circle" color="" styles={{}} postId={item.id}/>
-          <Icon name="heart" width={30} height={30} fill=""/>
+          <Pressable  onPress={() => setLike(like + 1)}>
+            <Icon name="heart" width={30} height={30} fill=""/>
+            <Text style={{position: 'absolute', right: -5 , color: 'white' , fontSize: 18}}>{like}</Text>
+          </Pressable>
+          
         </Box>
       </VStack>
     </Box>
@@ -36,7 +41,7 @@ export const PostUsers = () => {
   return(
      <FlatList
      style={styles.containerList}
-      data={userPosts}
+      data={userPosts.reverse()}
       renderItem={renderItem}
       keyExtractor={(item,index) => index.toString()}
      />

@@ -4,11 +4,12 @@ import { useContext } from "react"
 import { SessionContext } from "../../contexts/sessionContex"
 import { useNavigation } from "@react-navigation/native"
 import { Groups } from "../../Screens/GroupsScreens"
+
 export const MenuIcon  = () => {
   const navigation = useNavigation()
   const {logout} = useContext(SessionContext)
   return(
-    <Box w="90%" alignItems="center">
+    <Box w="90%">
       <Menu
         w='190'
         
