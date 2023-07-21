@@ -11,10 +11,8 @@ export const PostUsers = () => {
   const {data} = useGetPosts()
   const {userPosts} = arrayPosts(data)
   const [like, setLike] = useState(0)
-   
-
+ 
   const renderItem = ({ item }) => {
-
     return (
       <Box border="1" borderRadius="md">
       <VStack space="4" marginBottom={'90'} bgColor={'red.300'} divider={<Divider />}>
@@ -25,7 +23,7 @@ export const PostUsers = () => {
           {item.content}
         </Box>
         <Box px="4" pb="4" flexDirection='row'justifyContent='flex-end'>
-          <TypeIcons name="message-circle" color="" styles={{}} postId={item.id}/>
+          <TypeIcons name="message-circle" countComment={item.commentCount} color="" styles={{}} postId={item.id}/>
           <Pressable  onPress={() => setLike(like + 1)}>
             <Icon name="heart" width={30} height={30} fill=""/>
             <Text style={{position: 'absolute', right: -5 , color: 'white' , fontSize: 18}}>{like}</Text>

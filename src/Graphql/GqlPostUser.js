@@ -8,6 +8,7 @@ export const GET_POST = gql`
         id
         title
         content
+        commentCount
       }
     }
   }

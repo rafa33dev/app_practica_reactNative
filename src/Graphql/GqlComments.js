@@ -32,3 +32,14 @@ export const CREATE_NEW_COMMENT_SUBCRIPTION = gql`
     }
   }
 `;
+
+export const CREATE_NEW_POST_SUBCRIPTION = gql`
+subscription NewPost($userId: ID!) {
+  NewPost(userID: $userId) {
+    content
+    id
+  }
+}
+
+
+`

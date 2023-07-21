@@ -4,9 +4,10 @@ import {useState} from 'react';
 import { CreateComment } from '../CreateComment';
 import { ListComment } from '../CreateComment/ListComment';
 
-export const TypeIcons = ({name, color, styles, postId }) => {
+export const TypeIcons = ({name, color, styles, postId ,countComment }) => {
   const [showComment, setShowComment] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+
 
   const comment = () => {
     //setShowComment(!showComment);
@@ -20,6 +21,9 @@ export const TypeIcons = ({name, color, styles, postId }) => {
     <View >
       <Pressable style={styles} onPress={comment}>
         <Icon name={name} width={30} height={30} fill={color} />
+
+        {countComment ?  (<Text>{countComment}</Text>): null}
+       
       </Pressable>
       <Modal visible={modalVisible} animationType="slide" >
 
