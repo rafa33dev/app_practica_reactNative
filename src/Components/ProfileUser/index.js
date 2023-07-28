@@ -6,11 +6,12 @@ import { CreatePostUser } from "../CreatePost";
 
 export const ProfileUser = () => {
   const {user} = useContext(SessionContext)
+  console.log('mi user',user);
   return(
     <View>
     <HStack justifyContent='center' alignItems='center' paddingTop={10} flexDirection='column'>
       <Avatar bg='green.500' h={100} w={100}  source={{
-        uri: "https://images.unsplash.com/photo-1614289371518-722f2615943d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+        uri: user.avatar
       }}>
         user1
       </Avatar>

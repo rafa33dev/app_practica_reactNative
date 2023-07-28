@@ -29,6 +29,7 @@ export const CreateComment = ({postId}) => {
   return(
     <View style={{flexDirection: 'row', maxHeight: 100, borderWidth:1,  borderColor: 'gray', alignItems:'center'}}>
       <ScrollView>
+        
       <TextInput
         placeholder="Escribe tu comentario"
         multiline={true}

@@ -2,7 +2,7 @@ import { GetComment_Post } from "../../Graphql/GqlComments"
 import { useQuery } from "@apollo/client"
 
 export const useGetCommentPost = (postId) => {
-  const { data, loading, error} = useQuery(GetComment_Post, {
+  const { data, loading, error, refetch} = useQuery(GetComment_Post, {
     variables: {
       postId: postId
     }
@@ -11,6 +11,7 @@ export const useGetCommentPost = (postId) => {
   return {
     data, 
     loading,
-    error
+    error,
+    refetch
   }
 } 

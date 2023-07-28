@@ -4,12 +4,17 @@ import {Text, View} from 'react-native';
 import {Box, VStack, Divider, Pressable} from 'native-base';
 import {Icon} from '@ui-kitten/components';
 import {SessionContext} from '../../../contexts/sessionContex';
-import {useContext, useState} from 'react';
+import {useContext, useState, useEffect} from 'react';
 
 export const ListComment = ({postId}) => {
-  const {data} = useGetCommentPost(postId);
+  const {data, refetch} = useGetCommentPost(postId);
   const [like, setLike] = useState(0)
 
+  useEffect(()=> {
+    refetch()
+    console.log('se refresco');
+  },[])
+  
   const ListCommentItems = ({item}) => {
     return (
       <Box border="1">

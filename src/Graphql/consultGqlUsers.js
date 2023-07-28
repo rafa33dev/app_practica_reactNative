@@ -39,8 +39,8 @@ mutation CreateUser($input: CreateUser!) {
     name
     username
     email
-    website
     avatar
+    website
     role
   }
 }

@@ -1,26 +1,32 @@
 import { gql } from "@apollo/client";
 
-export const GET_POST = gql`
-  query GetUsers {
-    GetUsers {
+export const GET_POSTS = gql`
+query GetPosts {
+  GetPosts {
+    id
+    title
+    content
+    author {
       name
-      posts {
-        id
-        title
-        content
-        commentCount
-      }
+      id
+      avatar
     }
   }
+}
 
 `
 
 export const CREATE_POST = gql`
-mutation CreatePost($title: String!, $content: String!, $authorId: ID!) {
-  CreatePost(title: $title, content: $content, authorId: $authorId) {
+mutation CreatePost($input: CreatePost!) {
+  CreatePost(input: $input) {
     id
     title
     content
+    author {
+      name
+      id
+      username
+    }
   }
 }
 

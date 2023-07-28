@@ -23,8 +23,8 @@ export const GetComment_Post = gql`
 `;
 
 export const CREATE_NEW_COMMENT_SUBCRIPTION = gql`
-  subscription NewComment($postId: ID!) {
-    NewComment(postID: $postId) {
+  subscription NewComment($postId: ID!, $userId: ID!) {
+    NewComment(postId: $postId, userId: $userId) {
       id
       content
       createdAt
@@ -36,8 +36,11 @@ export const CREATE_NEW_COMMENT_SUBCRIPTION = gql`
 export const CREATE_NEW_POST_SUBCRIPTION = gql`
 subscription NewPost($userId: ID!) {
   NewPost(userID: $userId) {
-    content
     id
+    content
+    author
+    createdAt
+    updatedAt
   }
 }
 

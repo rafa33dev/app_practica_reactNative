@@ -8,9 +8,8 @@ import { useCreateUser } from '../../Hooks/HooksUsers/useCreateUser'
 import { Picker } from '@react-native-picker/picker'
 
 export const FormSignUp = () => {
-  const [dataUser, setDataUser] = useState({})
   const roles = ['admin', 'usuario'];
-  const {data, loading, error, createUser} = useCreateUser(dataUser)
+  const {data, loading, error, createUser} = useCreateUser()
   const navigation = useNavigation()
   //const { user} = useContext(SessionContext)
   useEffect(() => {
@@ -28,9 +27,20 @@ export const FormSignUp = () => {
     };
   };
 
-  const createUsers = () => {
+  const createUsers = (values) => {
     try {
-      createUser()
+      createUser({
+        variables: {
+        input: {  
+          name:values.name,
+          role:values.role,
+          email: values.email,
+          avatar: "https://st.depositphotos.com/6408672/52772/i/600/depositphotos_527728480-stock-photo-twisted-colored-drops-close-up.jpg",
+          website: values.website,
+          password : values.password
+        }
+      }
+      })
     } catch (error) {
       throw new Error('error al crear al usuario')
     }
@@ -38,11 +48,10 @@ export const FormSignUp = () => {
 
   return(
     <Formik
-      initialValues={{name: '', email:'',  website: '' , password: '' , role: '' }}
+      initialValues={{name: '', email:'', avatar: "",  website: '' , password: '' , role: '' }}
       validationSchema={validationSchema}
       onSubmit={(values, {resetForm}) => {
-        setDataUser(values)
-        createUsers()
+        createUsers(values)
         resetForm()
       }}
     >

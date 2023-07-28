@@ -12,36 +12,8 @@ import {NativeBaseProvider} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {SessionContextProvider} from './src/contexts/sessionContex';
 import {GroupsNavigator} from './src/GroupsNavigator';
-
-import {getMainDefinition} from '@apollo/client/utilities';
 import {createClient} from 'graphql-ws';
-import {WebSocketLink} from '@apollo/client/link/ws';
-import {createHttpLink} from '@apollo/client/link/http';
 import { WebSocket } from 'ws';
-
-// const httpLink = createHttpLink({
-//   uri: 'http://10.2.20.57:4001/gql',
-// });
-
-// const wsLink = new WebSocketLink({
-//   uri: 'ws://10.2.20.57:4001/gql',
-//   options: {
-//     reconnect: true,
-//   },
-// });
-
-// const splitLink = split(
-//   ({query}) => {
-//     const definition = getMainDefinition(query);
-//     return (
-//       definition.kind === 'OperationDefinition' &&
-//       definition.operation === 'subscription'
-//     );
-//   },
-//   wsLink,
-//   httpLink,
-// );
-
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 
 const cl = createClient({
