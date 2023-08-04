@@ -6,14 +6,24 @@ query GetPosts {
     id
     title
     content
+    commentCount
     author {
-      name
       id
+      name
       avatar
     }
+    comments {
+      content
+      author {
+        name
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
   }
 }
-
 `
 
 export const CREATE_POST = gql`

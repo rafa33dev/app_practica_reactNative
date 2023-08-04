@@ -1,25 +1,33 @@
 import {gql} from '@apollo/client';
 
 export const CREATE_COMMENT = gql`
-  mutation CreateComment($postId: ID!, $content: String!, $userId: ID!) {
-    CreateComment(postId: $postId, content: $content, userId: $userId) {
-      content
-      createdAt
+mutation CreateComment($input: CreateComment) {
+  CreateComment(input: $input) {
+    id
+    content
+    author {
+      id
+      name
+      avatar
     }
+    createdAt
+    updatedAt
   }
+}
 `;
 
 export const GetComment_Post = gql`
-  query Post($postId: ID!) {
-    Post(id: $postId) {
-      comments {
-        content
-        author {
-          name
-        }
-      }
+query GetPostComments($postId: ID!) {
+  GetPostComments(postId: $postId) {
+    id
+    content
+    author {
+      id
+      name
+      avatar
     }
   }
+}
 `;
 
 export const CREATE_NEW_COMMENT_SUBCRIPTION = gql`
@@ -37,12 +45,21 @@ export const CREATE_NEW_POST_SUBCRIPTION = gql`
 subscription NewPost($userId: ID!) {
   NewPost(userID: $userId) {
     id
+    title
     content
-    author
+    author {
+      id
+      name
+      avatar
+    }
     createdAt
     updatedAt
   }
 }
+`
 
-
+export const CREATE_COUNT_POST_NOTIFICATION = gql`
+subscription Subscription {
+  CountPost
+}
 `

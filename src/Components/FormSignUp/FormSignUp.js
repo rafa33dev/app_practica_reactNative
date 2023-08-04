@@ -27,9 +27,9 @@ export const FormSignUp = () => {
     };
   };
 
-  const createUsers = (values) => {
+  const createUsers = async (values) => {
     try {
-      createUser({
+      await createUser({
         variables: {
         input: {  
           name:values.name,
@@ -41,7 +41,9 @@ export const FormSignUp = () => {
         }
       }
       })
+      console.log("Usuario creado correctamente");
     } catch (error) {
+      console.error("Error al crear el usuario:", error);
       throw new Error('error al crear al usuario')
     }
   }

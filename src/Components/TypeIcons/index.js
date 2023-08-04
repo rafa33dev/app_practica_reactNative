@@ -9,6 +9,7 @@ export const TypeIcons = ({name, color, styles, postId ,countComment , refetch})
   const [modalVisible, setModalVisible] = useState(false);
 
 
+
   const comment = () => {
     setModalVisible(true)
   };
@@ -32,7 +33,7 @@ export const TypeIcons = ({name, color, styles, postId ,countComment , refetch})
           <ListComment postId={postId} />
 
         <View style={{ flex: 1, justifyContent: 'flex-end', bottom: 30}}>
-          <CreateComment postId={postId}/>
+          <CreateComment postId   ={postId}/>
           <Button title="Cancelar" onPress={closed}/>
         </View>
       </Modal>

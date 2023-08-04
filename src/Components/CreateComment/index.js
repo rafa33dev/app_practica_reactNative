@@ -1,4 +1,4 @@
-import { Button, ScrollView } from "native-base"
+import { Avatar, Button, ScrollView } from "native-base"
 import { useContext, useEffect, useState } from "react"
 import { TextInput, View , Pressable} from "react-native"
 import { SessionContext } from "../../contexts/sessionContex"
@@ -6,23 +6,35 @@ import { useCreateComment } from "../../Hooks/HooksComments/useCreateComment"
 
 
 export const CreateComment = ({postId}) => {
-
+  //console.log('el id del post---> ', postId);
   const [content, setContent] = useState('')
   const { user } = useContext(SessionContext)
-
-  const {createComment, data, loading, error} = useCreateComment({ postId: postId , content: content, userId: user.userId})
+  //console.log('--->', user.avatar);
+  const {createComment, data, loading, error} = useCreateComment()
   
   // useEffect(() => {
-  //   console.log('--->', data);
+  //   console.log('---> de cracion', data);
   // },[data])
 
   const Comment = () => {
     try {
-      createComment()
-      console.log('comentario creado!');
+      createComment({
+        variables: {
+         input:{  
+          postId: postId,
+          content: content,
+          author: {
+            id: user?.userId,
+            name: user?.name,
+            avatar: user?.avatar
+          }
+         }
+        }
+      })
+     // console.log('comentario creado!');
       setContent('')
     } catch (error) {
-      throw new Error('Error al crear el comentario')
+      throw new Error('Error al crear el comentario', error.message)
     }
   }
 

@@ -12,7 +12,8 @@ export const CreatePostUser = () => {
   const {user} = useContext(SessionContext);
   const [isFocused, setIsFocused] = useState(false);
   const {data, createPost, loading, error} = useCreatePost();
- console.log('mi uswr', user);
+  
+// console.log('mi uswr', user);
   const createPostUsers = async values => {
     try {
       createPost({

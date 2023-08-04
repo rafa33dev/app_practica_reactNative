@@ -30,7 +30,7 @@ export const SubscriptionComment = ({postId}) => {
   useEffect(() => {
     if (data) {
       const {NewComment} = data;
-      console.log('mi data-------->', NewComment);  
+      //console.log('mi data-------->', NewComment);  
     }
   }, [data, loading, error]);
 

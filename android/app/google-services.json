@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "886691370305",
+    "project_id": "proyectexample-3b1b5",
+    "storage_bucket": "proyectexample-3b1b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886691370305:android:06bbb5b3bc67c2efd07dc0",
+        "android_client_info": {
+          "package_name": "com.chaskyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886691370305-tbtg19jkvj1ug6c81dvk6esi0aacq0gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgfxqUbjNpgXl1VLaPffUQkZIikWZktFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886691370305-tbtg19jkvj1ug6c81dvk6esi0aacq0gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

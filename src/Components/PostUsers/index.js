@@ -10,39 +10,41 @@ import { SessionContext } from '../../contexts/sessionContex';
 
 export const PostUsers = () => {
   const {data, refetch} = useGetPosts();
-  const newData = data?.GetPosts
+  const newData = data?.GetPosts.slice()
   const [like, setLike] = useState(0);
 
- 
+  if (newData?.length > 0) {
+    newData.sort((a, b) => b.createdAt - a.createdAt);
+  }
 
+  useEffect(() => {
+    refetch()
+  },[])
+ 
   const renderItem = ({item}) => {
-  
-    
-        refetch();
-   
-   
+  // console.log('que paso', item);
+   refetch()
     return (
-      <Box border="1" borderRadius="md">
+      <Box overflowY={'hidden'}>
         <VStack
-          space="4"
-          marginBottom={'90'}
-          bgColor={'red.300'}
+          borderRadius={'lg'}
+          space="1"
+          marginBottom={60}
+          
           divider={<Divider />}>
-          <Box px="4" pt="4" flexDirection={'row'} alignItems={'center'}>
+          <Box p="4" backgroundColor={'gray.400'} flexDirection={'row'} alignItems={'center'}>
             <Avatar
-              bg="green.500"
               h={50}
               w={50}
               source={{
-                uri: item.author.avatar,
+                uri: item?.author?.avatar,
               }}>
               user1
             </Avatar>
-            <Text ml={4}>{item.author.name}</Text>
-            
+            <Text ml={4} color={'gray.900'} fontWeight={'500'} fontSize={17}>{item.author.name}</Text>
           </Box>
-          <Box px="4" h={300}>
-            {item.content}
+          <Box p="4" maxHeight={300} bgColor={'white'}>
+            <Text fontSize={16}  color={'gray.500'}>{item.content}</Text>
           </Box>
           <Box px="4" pb="4" flexDirection="row" justifyContent="flex-end">
             <TypeIcons
@@ -87,6 +89,8 @@ export const PostUsers = () => {
 const styles = StyleSheet.create({
   containerList: {
     width: '100%',
+    marginBottom: 150,
+    padding: 5
   },
 
   items: {

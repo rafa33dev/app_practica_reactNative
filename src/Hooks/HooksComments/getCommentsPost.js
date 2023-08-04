@@ -1,4 +1,5 @@
 import { GetComment_Post } from "../../Graphql/GqlComments"
+
 import { useQuery } from "@apollo/client"
 
 export const useGetCommentPost = (postId) => {

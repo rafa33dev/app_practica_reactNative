@@ -13,22 +13,23 @@ import {NavigationContainer} from '@react-navigation/native';
 import {SessionContextProvider} from './src/contexts/sessionContex';
 import {GroupsNavigator} from './src/GroupsNavigator';
 import {createClient} from 'graphql-ws';
-import { WebSocket } from 'ws';
-import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+import {WebSocket} from 'ws';
+import {GraphQLWsLink} from '@apollo/client/link/subscriptions';
+import {SubscriptionProvider} from './src/contexts/SubcriptionPostsProvider';
 
 const cl = createClient({
   webSocketImpl: WebSocket,
-  url: 'ws://10.2.20.57:4001/gql'
-})
+  url: 'ws://10.2.20.57:4001/gql',
+});
 
-const link = new GraphQLWsLink(cl)
+const link = new GraphQLWsLink(cl);
 
 const client = new ApolloClient({
   uri: 'http://10.2.20.57:4001/gql',
   cache: new InMemoryCache(),
 });
 
-client.setLink(link)
+client.setLink(link);
 
 function App() {
   const mapping = eva.mapping;
@@ -44,8 +45,10 @@ function App() {
                   {...eva}
                   mapping={mapping}
                   theme={eva[switchTheme]}>
-                  <IconRegistry icons={EvaIconsPack} />
-                  <GroupsNavigator />
+                  <SubscriptionProvider>
+                    <IconRegistry icons={EvaIconsPack} />
+                    <GroupsNavigator />
+                  </SubscriptionProvider>
                 </ApplicationProvider>
               </NativeBaseProvider>
             )}
